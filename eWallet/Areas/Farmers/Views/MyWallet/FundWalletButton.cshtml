@@ -1,0 +1,65 @@
+﻿@model eWallet.Areas.Farmers.Models.EtranzactPayment
+
+@{
+    ViewBag.Title = "Fund Wallet";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Fund Wallet</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <a class="btn btn-default pull-right" href="@Url.Action("Index")">
+                            <i class="fa fa-chevron-left"></i> Back to Wallet Info
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <p>You are about to fund your wallet with @Model.TotalAmount. Click below to proceed.</p>
+                    <br />
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <form method="POST" action="@Model.Url">
+                            <input type="hidden" name="TERMINAL_ID" value="@Model.TerminalId" />
+                            <input type="hidden" name="TRANSACTION_ID" value="@Model.TransactionId" />
+                            <input type="hidden" name="AMOUNT" value="@Model.TotalAmount" />
+                            <input type="hidden" name="DESCRIPTION" value="Payment for Invoice @Model.InvoiceTitle" />
+                            <input type="hidden" name="EMAIL" value="@Model.Email" />
+                            <input type="hidden" name="CURRENCY_CODE" value="NGN" />
+                            <input type="hidden" name="CHECKSUM" value="@Model.CheckSum" />
+                            <input type="hidden" name="RESPONSE_URL" value="@Model.ResponseUrl">
+                            <input type="hidden" name="LOGO_URL" value="@Url.Content("~/Images/a4.jpg")">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-cc-paypal">
+                                    Pay With ATM Card
+                                </i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles{
+    @Styles.Render("~/Content/select2")
+}
+@section Scripts {
+    @Scripts.Render("~/vendors/jquery-validate")
+    @Scripts.Render("~/vendors/select2")
+}

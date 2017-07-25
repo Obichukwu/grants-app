@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Fund Wallet";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Fund Wallet</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <a class="btn btn-default pull-right" href="@Url.Action("Index")">
+                            <i class="fa fa-chevron-left"></i> Back to Wallet Info
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    @using (Html.BeginForm("FundWallet", "MyWallet", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.Label("Amount", htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBox("Amount","0", htmlAttributes: new { @class = "form-control  col-md-7 col-xs-12", @Type = "Number" })
+                                @Html.ValidationMessage("Amount", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles{
+    @Styles.Render("~/Content/select2")
+}
+@section Scripts {
+    @Scripts.Render("~/vendors/jquery-validate")
+    @Scripts.Render("~/vendors/select2")
+}

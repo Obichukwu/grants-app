@@ -1,0 +1,49 @@
+﻿@using eWallet.ViewModels.Account
+@model eWallet.ViewModels.Account.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+
+    ViewBag.Title = "Log in";
+}
+
+<div class="animate form login_form">
+    <section class="login_content">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { }))
+        {
+            @Html.AntiForgeryToken()
+            <h1>Login Form</h1>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div>
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Username" })
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                <input type="submit" value="Log in" class="btn btn-default submit" />
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+                <p class="change_link">
+                    New to site?
+                    @Html.ActionLink("Register as a Farmer", "RegisterFarmer")
+                    Or
+                    @Html.ActionLink("Register as an Agent", "RegisterAgent")
+                </p>
+                <div class="clearfix"></div>
+                <br />
+                <div>
+                    <h1><i class="fa fa-paw"></i> Grants E-Wallet! </h1>
+                    <p>
+                        @DateTime.Now.Year All Rights Reserved. Grants E-Wallet - Developed in Partial fulfillment of the Requirements for the Award of HND in Computer Science.
+                        <a href="//dspzonline.com">Delta State Polytechnic, Ozoro</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </section>
+<

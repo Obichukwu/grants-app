@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grants e-Wallet | @ViewBag.Title </title>
+
+    <!-- Bootstrap -->
+    @Styles.Render("~/Content/bootstrap")
+    <!-- Font Awesome -->
+    @Styles.Render("~/Content/font-awesome")
+    <!-- NProgress -->
+    @Styles.Render("~/Content/nprogress")
+    <!-- iCheck -->
+    @Styles.Render("~/Content/iCheck")
+
+    <!-- PNotify -->
+    @Styles.Render("~/Content/pnotify")
+
+    <!-- bootstrap-progressbar -->
+    @Styles.Render("~/Content/bootstrap-progressbar")
+    <!-- JQVMap -->
+    @Styles.Render("~/Content/jqvmap")
+
+    <!-- bootstrap-daterangepicker -->
+    @Styles.Render("~/Content/bootstrap-daterangepicker")
+    <!-- Custom Theme Style -->
+    @Styles.Render("~/Content/gentelella")
+
+    <!-- Add local styles, mostly for plugins css file -->
+    @RenderSection("Styles", required: false)
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!-- Side Navigation -->
+            @Html.Partial("_Navigation")
+            <!-- top navigation -->
+            @Html.Partial("_TopNavbar")
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Grants e-Wallet - Developed in Partial fulfillment of the Requirements for the Award of HND in Computer Science <a href="//dspzonline.com">Delta State Polytechnic, Ozoro</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    @Scripts.Render("~/Vendors/jquery")
+    <!-- Bootstrap -->
+    @Scripts.Render("~/Vendors/bootstrap")
+    <!-- FastClick -->
+    @Scripts.Render("~/Vendors/fastclick")
+    <!-- NProgress -->
+    @Scripts.Render("~/Vendors/nprogress")
+    <!-- Chart.js -->
+    @Scripts.Render("~/Vendors/chartjs")
+    <!-- gauge.js -->
+    @Scripts.Render("~/Vendors/gaugejs")
+    <!-- bootstrap-progressbar -->
+    @Scripts.Render("~/Vendors/bootstrap-progressbar")
+    <!-- iCheck -->
+    @Scripts.Render("~/Vendors/iCheck")
+    <!-- PNotify -->
+    @Scripts.Render("~/Vendors/pnotify")
+    <!-- Skycons -->
+    @Scripts.Render("~/Vendors/skycons")
+    <!-- Flot -->
+    @Scripts.Render("~/Vendors/Flot")
+    <!-- DateJS -->
+    @Scripts.Render("~/Vendors/DateJS")
+    <!-- JQVMap -->
+    @Scripts.Render("~/Vendors/jqvmap")
+    <!-- bootstrap-daterangepicker -->
+    @Scripts.Render("~/Vendors/moment")
+    @Scripts.Render("~/Vendors/bootstrap-daterangepicker")
+
+    @RenderSection("Scripts", required: false)
+
+    <!-- Custom Theme Scripts -->
+    @Scripts.Render("~/Vendors/gentelella")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function notify (title, text, type, autohide) {
+                var p = new PNotify({
+                    title: title,
+                    text: text,
+                    type: type,
+                    hide: autohide,
+                    styling: 'bootstrap3'
+                });
+            }
+
+            @if (TempData["Notifications"] != null) {
+                @: var notifications = @Html.Raw(eWallet.Controllers.WalletController.GetJson(TempData["Notifications"]));
+                @: for (var i = 0, len = notifications.length; i < len; i++) {
+                @:     notify( notifications[i].Title, notifications[i].Message, notifications[i].Type,notifications[i].AutoHide);
+                @: }
+            }
+        });
+    </script>
+</body>
+</html>

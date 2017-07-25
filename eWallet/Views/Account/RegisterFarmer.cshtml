@@ -1,0 +1,81 @@
+﻿@model eWallet.ViewModels.Account.RegisterFarmerViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+
+    ViewBag.Title = "Register Farmer";
+}
+
+<div id="register" class="animate form registration_form">
+    <section class="login_content">
+        @using (Html.BeginForm("RegisterFarmer", "Account", FormMethod.Post, new { }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Register a new Farmer.</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            <h1>Create Farmer's Account</h1>
+            <div>
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Username" })
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+            <div class="separator"></div>
+            <div>
+                @Html.EnumDropDownListFor(m => m.Type, "Select FarmType", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.FarmName, new{@class = "form-control",placeholder = "Farm Name"})
+                @Html.ValidationMessageFor(m => m.FarmName, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Firstname" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.OtherName, new { @class = "form-control", placeholder = "Lastname" })
+                @Html.ValidationMessageFor(m => m.OtherName, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.EnumDropDownListFor(m => m.State, "Select State", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.EnumDropDownListFor(m => m.Region, "Select Region", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Region, "", new { @class = "text-danger" })
+            </div>
+            <div class="separator"></div>
+            <div>
+                <input type="submit" value="Register" class="btn btn-default submit" />
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+                <p class="change_link">
+                    Already a member ?
+                    @Html.ActionLink("Log in", "Login")
+                </p>
+                <div class="clearfix"></div>
+                <br />
+                <div>
+                    <h1><i class="fa fa-paw"></i> Grants EWallet! </h1>
+                    <p>
+                        @DateTime.Now.Year All Rights Reserved. Grants EWallet - Developed in Partial fulfillment of the Requirements for the Award of HND in Computer Science.
+                        <a href="//dspzonline.com">Delta State Polytechnic, Ozoro</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </section>
+</div>

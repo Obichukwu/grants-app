@@ -1,0 +1,104 @@
+﻿@model eWallet.Areas.Farmers.Models.DashboardModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row tile_count">
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> My Grants</span>
+        <div class="count blue">@Model.GrantCount</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> My Pending Grants</span>
+        <div class="count blue">@Model.PendingGrantCount</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-clock-o"></i> Grants Spent</span>
+        <div class="count green">@Model.GrantSpent</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-clock-o"></i> Grants Balance</span>
+        <div class="count green">@Model.GrantBalance</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-clock-o"></i> My Balance</span>
+        <div class="count green">@Model.GeneralBalance</div>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> My Completed Orders</span>
+        <div class="count">@Model.CompletedOrdersCount</div>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel tile">
+            <div class="x_title">
+                <h2>Grants Summary</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <h4>Grants Available vs Spent</h4>
+                @foreach (var grant in Model.ApprovedGrants)
+                {
+                    <div class="widget_summary">
+                        <div class="w_left w_25">
+                            <span>@grant.Grant.Title</span>
+                        </div>
+                        @{
+                            var percentSpent = ((grant.ApprovedAmount - grant.AvailableAmount) / grant.ApprovedAmount) * 100;
+                        }
+                        <div class="w_center w_55">
+                            <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="@percentSpent" aria-valuemin="0" aria-valuemax="100" style="width: @percentSpent%;">
+                                    <span class="sr-only">@percentSpent% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w_right w_20">
+                            <span>@grant.ApprovedAmount</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                            }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel tile">
+            <div class="x_title">
+                <h2>Pending Grants Summary</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <h4>Grants Available vs Spent</h4>
+                @foreach (var grant in Model.PendingGrants)
+                {
+                    <div class="widget_summary">
+                        <div class="w_left w_25">
+                            <span>@grant.Grant.Title</span>
+                        </div>
+                        @{
+                            var percentSpent = ((grant.ApprovedAmount - grant.AvailableAmount) / grant.ApprovedAmount) * 100;
+                        }
+                        <div class="w_center w_55">
+                            <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="@percentSpent" aria-valuemin="0" aria-valuemax="100" style="width: @percentSpent%;">
+                                    <span class="sr-only">@percentSpent% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w_right w_20">
+                            <span>@grant.ApprovedAmount</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                            }
+            </div>
+        </div>
+    </div>
+</div>

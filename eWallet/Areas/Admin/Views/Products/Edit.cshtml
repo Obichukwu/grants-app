@@ -1,0 +1,115 @@
+﻿@model eWallet.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Update Product</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <a class="btn btn-danger pull-right" data-toggle="modal" data-target="#delModal">
+                            <i class="fa fa-times"></i> Delete
+                        </a> |
+                        <a class="btn btn-default pull-right" href="@Url.Action("Edit", "Grants", new {Id = Model.GrantId})">
+                            <i class="fa fa-chevron-left"></i> Back to List
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(el => el.Id)
+                        @Html.HiddenFor(el => el.GrantId)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(model => model.Title, htmlAttributes: new { @class = "form-control  col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(model => model.Code, new { @class = "resizable_textarea form-control" })
+                                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(model => model.Amount, new { @class = "resizable_textarea form-control" })
+                                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextAreaFor(model => model.Description, new { @class = "resizable_textarea form-control" })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            @using (Html.BeginForm("Delete", "Product", new { Area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => Model.Id)
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title">Delete @Model.Title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            Are you sure you want to <strong>Edit</strong> this Product?
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fa fa-times"></i>Cancel</button>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-check"></i>Yes Delete</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles{
+    @Styles.Render("~/Content/select2")
+}
+@section Scripts {
+    @Scripts.Render("~/vendors/jquery-validate")
+    @Scripts.Render("~/vendors/select2")
+}

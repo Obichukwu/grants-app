@@ -1,0 +1,72 @@
+﻿@using eWallet.Extensions
+<div class="menu_section">
+    <h3>Agent's Menu</h3>
+    <ul class="nav side-menu">
+        <li class="@Html.IsSelected(area: "Agents", controller:"Dashboard")">
+            <a>
+                <i class="fa fa-home"></i> Home
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "Dashboard", new {Area="Agents"})">Dashboard</a>
+                </li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(area: "Agents", controller:"MyGrants")">
+            <a>
+                <i class="fa fa-edit"></i> My Grants
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "MyGrants", new {Area="Agents"})">Manage</a>
+                </li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(area: "Agents", controller:"MyProducts")">
+            <a>
+                <i class="fa fa-desktop"></i> My Products
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "MyProducts", new {Area="Agents"})">Manage</a>
+                </li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(area: "Agents", controller:"MyOrders")">
+            <a>
+                <i class="fa fa-table"></i> Order Mgt
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "MyOrders", new {Area="Agents"})">Manage</a>
+                </li>
+            </ul>
+        </li>
+        @*<li class="@Html.IsSelected(area: "Agents", controller:"MyWithdrawal")">
+            <a>
+                <i class="fa fa-table"></i> Withdrawal
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "MyWithdrawal", new {Area="Agents"})">Manage</a>
+                </li>
+            </ul>
+        </li>*@
+        <li class="@Html.IsSelected(area: "Agents", controller:"MyReports")">
+            <a>
+                <i class="fa fa-table"></i> Reports Mgt
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "MyReports", new {Area="Agents"})">Manage</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

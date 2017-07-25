@@ -1,0 +1,110 @@
+﻿@using eWallet.Extensions
+<div class="menu_section">
+    <h3>Admin's Menu</h3>
+    <ul class="nav side-menu">
+        <li class="@Html.IsSelected(area: "Admin", controller:"Dashboard")">
+            <a>
+                <i class="fa fa-home"></i> Home
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "Dashboard", new {Area="Admin"})">Dashboard</a>
+                </li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Grants")
+            @Html.IsSelected(area: "Admin", controller:"GrantsFarmer")
+            @Html.IsSelected(area: "Admin", controller:"GrantsAgent")">
+            <a>
+                <i class="fa fa-edit"></i> Grants Manager
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "Grants", new {Area="Admin"})">Manage</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "GrantsFarmer", new {Area="Admin"})">Farmers Request</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "GrantsAgent", new {Area="Admin"})">Agents Request</a>
+                </li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Farmers")">
+            <a>
+                <i class="fa fa-desktop"></i> Farmers Mgt
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "Farmers", new {Area="Admin"})">Manage</a>
+                </li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Agents")">
+            <a>
+                <i class="fa fa-table"></i> Agents Mgt
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "Agents", new {Area="Admin"})">Manage</a>
+                </li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Users")">
+            <a>
+                <i class="fa fa-table"></i> Users Mgt
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "Users", new {Area="Admin"})">Manage</a>
+                </li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Withdrawals")">
+            <a>
+                <i class="fa fa-table"></i> Withdrawal Requests
+                <span class="fa fa-chevron-down"></span>
+            </a>
+            <ul class="nav child_menu">
+                <li>
+                    <a href="@Url.Action("Index", "Withdrawals", new {Area="Admin"})">Withdrawals</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="menu_section">
+    <h3>Reports</h3>
+    <ul class="nav side-menu">
+        <li class="@Html.IsSelected(area: "Admin", controller:"Dashboard")">
+            <a href="@Url.Action("Index", "Dashboard", new {Area="Admin"})">
+                <i class="fa fa-bug"></i> Categories Report
+            </a>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Dashboard")">
+            <a href="@Url.Action("Index", "Dashboard", new {Area="Admin"})">
+                <i class="fa fa-bug"></i> Sub-Section Report
+            </a>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Dashboard")">
+            <a href="@Url.Action("Index", "Dashboard", new {Area="Admin"})">
+                <i class="fa fa-bug"></i> Artifacts Report
+            </a>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Dashboard")">
+            <a href="@Url.Action("Index", "Dashboard", new {Area="Admin"})">
+                <i class="fa fa-bug"></i> Artifacts by Section Report
+            </a>
+        </li>
+        <li class="@Html.IsSelected(area: "Admin", controller:"Dashboard")">
+            <a href="@Url.Action("Index", "Dashboard", new {Area="Admin"})">
+                <i class="fa fa-bug"></i> Users Report
+            </a>
+        </li>
+    </ul>
+</div>

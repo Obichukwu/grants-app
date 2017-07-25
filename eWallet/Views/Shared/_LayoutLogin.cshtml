@@ -1,0 +1,57 @@
+﻿@using eWallet.Controllers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Grants eWallet | @ViewBag.Title </title>
+    <!-- Bootstrap -->
+    @Styles.Render("~/Content/bootstrap")
+    <!-- Font Awesome -->
+    @Styles.Render("~/Content/font-awesome")
+    <!-- NProgress -->
+    @Styles.Render("~/Content/nprogress")
+    <!-- Animate.css -->
+    @Styles.Render("~/Content/animate")
+    <!-- PNotify -->
+    @Styles.Render("~/Content/pnotify")
+    <!-- Custom Theme Style -->
+    @Styles.Render("~/Content/gentelella")
+</head>
+<body class="login">
+<div>
+    <div class="login_wrapper">
+        @RenderBody()
+    </div>
+</div>
+
+<!-- PNotify -->
+@Scripts.Render("~/Vendors/jquery")
+@Scripts.Render("~/Vendors/pnotify")
+@Scripts.Render("~/Vendors/jquery-validate")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        function notify (title, text, type, autohide) {
+            var p = new PNotify({
+                title: title,
+                text: text,
+                type: type,
+                hide: autohide,
+                styling: 'bootstrap3'
+            });
+        }
+
+        @if (TempData["Notifications"] != null) {
+            @: var notifications = @Html.Raw(WalletController.GetJson(TempData["Notifications"]));
+            @: for (var i = 0, len = notifications.length; i < len; i++) {
+            @:     notify( notifications[i].Title, notifications[i].Message, notifications[i].Type,notifications[i].AutoHide);
+            @: }
+        }
+    });
+</script>
+</body>
+</html>
