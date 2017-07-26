@@ -61,7 +61,7 @@ namespace eWallet.Areas.Admin.Controllers
                 var result = UserManager.CreateAsync(user, userCreateVm.Password).Result;
                 if (result.Succeeded)
                 {
-                    //UserManager.AddToRole(user.Id, nameof(UserType.Administrator));
+                    UserManager.AddToRole(user.Id, nameof(UserType.Admin));
                     //await SendEmailConfirmationTokenAsync(user.Id, user.Email, "Confirm your account");
                     return RedirectToAction("Index");
                 }

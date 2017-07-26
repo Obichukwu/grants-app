@@ -163,11 +163,14 @@ namespace eWallet.Controllers
                 State = model.State,
                 Region = model.Region,
                 RegistrationDate = DateTimeOffset.Now,
-                Status = MembershipStatus.Pending
+                Status = MembershipStatus.Pending,
+                UserRole = UserType.Agent
             };
             var result = await UserManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                UserManager.AddToRole(user.Id, nameof(UserType.Agent));
+
                 AddNotification(Notification.GetSuccess("Agent Created", "Agent is successfully created, awaiting confirmation."));
                 await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
@@ -221,11 +224,13 @@ namespace eWallet.Controllers
                 State = model.State,
                 Region = model.Region,
                 RegistrationDate = DateTimeOffset.Now,
-                Status = MembershipStatus.Pending
+                Status = MembershipStatus.Pending,
+                UserRole = UserType.Agent
             };
             var result = await UserManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                UserManager.AddToRole(user.Id, nameof(UserType.Farmer));
                 AddNotification(Notification.GetSuccess("Farmer Created", "Farmer is successfully created, awaiting confirmation."));
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
