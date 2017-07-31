@@ -118,6 +118,10 @@ namespace eWallet.Areas.Farmers.Controllers
                     return View(productModel);
                 }
 
+                var agentWallet = EWalletContext.AgentGrants
+                    .FirstOrDefault(el => el.AgentId == productModel.AgentId &&
+                                          el.GrantId == productModel.GrantId);
+
                 var grantWallet = EWalletContext.FarmerGrants
                     .FirstOrDefault(el => el.FarmerId == LoggedInUser.Id &&
                                           el.Status == eWallet.Models.FarmerGrantStatus.Approved &&
@@ -155,6 +159,7 @@ namespace eWallet.Areas.Farmers.Controllers
                 {
                     farmer.GeneralWalletBalance -= price;
                 }
+                agentWallet.PendingBalance += price;
 
                 var order = new Order {
                     ProductId = productModel.ProductId,

@@ -42,10 +42,14 @@
             </a>
             <ul class="nav child_menu">
                 <li>
-                    <a href="@Url.Action("Index", "MyOrders", new {Area="Agents"})">Manage</a>
+                    <a href="@Url.Action("Index", "MyOrders", new {Area="Agents"})">Pending Orders</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Completed", "MyOrders", new {Area="Agents"})">Completed Orders</a>
                 </li>
             </ul>
         </li>
+
         @*<li class="@Html.IsSelected(area: "Agents", controller:"MyWithdrawal")">
             <a>
                 <i class="fa fa-table"></i> Withdrawal
@@ -57,7 +61,7 @@
                 </li>
             </ul>
         </li>*@
-        <li class="@Html.IsSelected(area: "Agents", controller:"MyReports")">
+        @*<li class="@Html.IsSelected(area: "Agents", controller:"MyReports")">
             <a>
                 <i class="fa fa-table"></i> Reports Mgt
                 <span class="fa fa-chevron-down"></span>
@@ -67,6 +71,6 @@
                     <a href="@Url.Action("Index", "MyReports", new {Area="Agents"})">Manage</a>
                 </li>
             </ul>
-        </li>
+        </li>*@
     </ul>
 </div>

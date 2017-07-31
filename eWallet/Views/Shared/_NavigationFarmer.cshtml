@@ -53,7 +53,10 @@
             </a>
             <ul class="nav child_menu">
                 <li>
-                    <a href="@Url.Action("Index", "MyOrders", new {Area="Farmers"})">Manage</a>
+                    <a href="@Url.Action("Index", "MyOrders", new {Area="Farmers"})">Pending Orders</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Completed", "MyOrders", new {Area="Farmers"})">Completed Orders</a>
                 </li>
             </ul>
         </li>

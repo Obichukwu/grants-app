@@ -184,11 +184,13 @@
     <Compile Include="Areas\Agents\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Agents\Controllers\BidController.cs" />
     <Compile Include="Areas\Agents\Controllers\MyGrantsController.cs" />
+    <Compile Include="Areas\Agents\Controllers\MyOrdersController.cs" />
     <Compile Include="Areas\Agents\Controllers\MyProductsController.cs" />
     <Compile Include="Areas\Agents\Models\BidApplyModel.cs" />
     <Compile Include="Areas\Agents\Models\DashboardModel.cs" />
     <Compile Include="Areas\Farmers\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Farmers\Controllers\MyGrantsController.cs" />
+    <Compile Include="Areas\Farmers\Controllers\MyOrdersController.cs" />
     <Compile Include="Areas\Farmers\Controllers\MyProductsController.cs" />
     <Compile Include="Areas\Farmers\Controllers\MyWalletController.cs" />
     <Compile Include="Areas\Farmers\Models\ProductBuyModel.cs" />
@@ -4372,6 +4374,11 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Areas\Farmers\Views\MyProducts\Index.cshtml" />
     <Content Include="Areas\Farmers\Views\MyProducts\Buy.cshtml" />
+    <Content Include="Areas\Farmers\Views\MyOrders\Update.cshtml" />
+    <Content Include="Areas\Farmers\Views\MyOrders\Index.cshtml" />
+    <Content Include="Areas\Farmers\Views\MyOrders\Completed.cshtml" />
+    <Content Include="Areas\Agents\Views\MyOrders\Completed.cshtml" />
+    <Content Include="Areas\Agents\Views\MyOrders\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
