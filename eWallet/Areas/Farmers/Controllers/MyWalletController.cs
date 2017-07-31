@@ -47,11 +47,11 @@ namespace eWallet.Areas.Farmers.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult FundWallet(decimal amount)
         {
-            var eTranzactPayment = GetETranzactPaymentInfo(amount);
+            var eTranzactPayment = GetETranzactPaymentInfo(amount, Guid.NewGuid().ToString());
             return View("FundWalletButton", eTranzactPayment);
         }
 
-        public ActionResult FundWalletResponse(int id)
+        public ActionResult FundWalletResponse(string id)
         {
             var farmer = EWalletContext.Farmers.Find(id);
             if (farmer == null)
@@ -68,7 +68,8 @@ namespace eWallet.Areas.Farmers.Controllers
                 var amountStr = Request.QueryString["DEBITED_AMOUNT"];
                 decimal amount;
                 decimal.TryParse(amountStr, out amount);
-                var eTranzactPayment = GetETranzactPaymentInfo(amount);
+                var transId = Request.QueryString["TRANSACTION_ID"];
+                var eTranzactPayment = GetETranzactPaymentInfo(amount, transId);
 
                 var finalCheckSum =
                         OnlinePaymenttHelper.GetEtranzactFinalCheckSum(success,
@@ -107,13 +108,13 @@ namespace eWallet.Areas.Farmers.Controllers
             return RedirectToAction("FundWallet");
         }
 
-        private EtranzactPayment GetETranzactPaymentInfo(decimal amount)
+        private EtranzactPayment GetETranzactPaymentInfo(decimal amount, string transId)
         {
             var eTranzactPayment = new EtranzactPayment
             {
                 ResponseUrl = Url.Action("FundWalletResponse", "MyWallet", new { LoggedInUser.Id }, Request.Url.Scheme),
                 Email = LoggedInUser.Email,
-                TransactionId = Guid.NewGuid().ToString(),
+                TransactionId = transId ,
                 InvoiceTitle = "Wallet Funding For Farmer",
                 TotalAmount = amount
             };

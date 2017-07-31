@@ -17,6 +17,9 @@ namespace eWallet.Models {
         public virtual ICollection<AgentGrant> Grants { get; set; } =
             new HashSet<AgentGrant>();
 
+        public virtual ICollection<Order> Orders { get; set; } =
+            new HashSet<Order>();
+
         public static void Configure(DbModelBuilder builder)
         {
             var agent = builder.Entity<Agent>();
@@ -29,6 +32,11 @@ namespace eWallet.Models {
             agent.HasMany(el => el.Grants)
                 .WithRequired(el => el.Agent)
                 .HasForeignKey(el => el.AgentId);
+
+            agent.HasMany(el => el.Orders)
+                .WithRequired(el => el.Agent)
+                .HasForeignKey(el => el.AgentId);
+
         }
     }
 }

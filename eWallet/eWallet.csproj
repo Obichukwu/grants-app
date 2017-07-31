@@ -189,7 +189,9 @@
     <Compile Include="Areas\Agents\Models\DashboardModel.cs" />
     <Compile Include="Areas\Farmers\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Farmers\Controllers\MyGrantsController.cs" />
+    <Compile Include="Areas\Farmers\Controllers\MyProductsController.cs" />
     <Compile Include="Areas\Farmers\Controllers\MyWalletController.cs" />
+    <Compile Include="Areas\Farmers\Models\ProductBuyModel.cs" />
     <Compile Include="Areas\Farmers\FarmersAreaRegistration.cs" />
     <Compile Include="Areas\Farmers\Models\DashboardModel.cs" />
     <Compile Include="Areas\Farmers\Models\BidApplyModel.cs" />
@@ -210,6 +212,10 @@
     <Compile Include="Migrations\201707211906269_First.cs" />
     <Compile Include="Migrations\201707211906269_First.Designer.cs">
       <DependentUpon>201707211906269_First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707310227408_FuryTime.cs" />
+    <Compile Include="Migrations\201707310227408_FuryTime.Designer.cs">
+      <DependentUpon>201707310227408_FuryTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -4364,6 +4370,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Farmers\Views\MyProducts\Index.cshtml" />
+    <Content Include="Areas\Farmers\Views\MyProducts\Buy.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -4431,6 +4439,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707211906269_First.resx">
       <DependentUpon>201707211906269_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707310227408_FuryTime.resx">
+      <DependentUpon>201707310227408_FuryTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

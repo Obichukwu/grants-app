@@ -21,6 +21,9 @@ namespace eWallet.Models {
         public virtual ICollection<FarmerGrant> Grants { get; set; } =
             new HashSet<FarmerGrant>();
 
+        public virtual ICollection<Order> Orders { get; set; } =
+            new HashSet<Order>();
+
         public static void Configure(DbModelBuilder builder)
         {
             var farmer = builder.Entity<Farmer>();
@@ -30,6 +33,10 @@ namespace eWallet.Models {
             farmer.Property(pr => pr.OtherName).IsRequired().HasMaxLength(50);
 
             farmer.HasMany(el => el.Grants)
+                .WithRequired(el => el.Farmer)
+                .HasForeignKey(el => el.FarmerId);
+
+            farmer.HasMany(el => el.Orders)
                 .WithRequired(el => el.Farmer)
                 .HasForeignKey(el => el.FarmerId);
         }

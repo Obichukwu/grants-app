@@ -10,17 +10,20 @@ namespace eWallet.Models
     public class Order //: BaseEntity
     {
         public int Id { get; set; }
-        public Product Product { get; set; }
-        public byte Quantity { get; set; }
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
+        public int Quantity { get; set; }
         public Decimal UnitPrice { get; set; }
 
-        public int AgentId { get; set; }
+        public string AgentId { get; set; }
         public virtual Agent Agent { get; set; }
 
-        public int FarmerId { get; set; }
+        public string FarmerId { get; set; }
         public virtual Farmer Farmer { get; set; }
 
         public DateTimeOffset DateOrdered { get; set; }
+
+        public OrderStatus Status { get; set; }
 
         public static void Configure(DbModelBuilder builder)
         {
@@ -43,5 +46,13 @@ namespace eWallet.Models
             //    .HasForeignKey(el => el.GrantId);
         }
 
+    }
+    public enum OrderStatus
+    {
+        Created,
+        AwaitingAgentDisbursal,
+        AwaitingFarmerConfirmation,
+        Completed,
+        Failed
     }
 }

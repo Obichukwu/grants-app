@@ -93,6 +93,7 @@ namespace eWallet.Areas.Admin.Controllers
                     return View(model);
                 }
                 farmerGrant.ApprovedAmount = model.ApprovedAmount;
+                farmerGrant.AvailableAmount = model.ApprovedAmount;
                 farmerGrant.Status = FarmerGrantStatus.Approved;
 
                 EWalletContext.SaveChanges();

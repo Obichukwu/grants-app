@@ -39,7 +39,7 @@
                         @Html.HiddenFor(model => model.Id)
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -100,7 +100,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Products Items</h2>
-                    <a class="btn btn-default pull-right" href="@Url.Action("Create", "Product", new {Id = Model.Id})">
+                    <a class="btn btn-default pull-right" href="@Url.Action("Create", "Products", new {Id = Model.Id})">
                         <i class="fa fa-plus"></i> Add New
                     </a>
                     <div class="clearfix"></div>
@@ -114,7 +114,7 @@
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Title)
-                                </th>                                
+                                </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Amount)
                                 </th>

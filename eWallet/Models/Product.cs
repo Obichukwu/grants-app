@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
@@ -13,6 +14,9 @@ namespace eWallet.Models {
         public int GrantId { get; set; }
         public virtual Grant Grant { get; set; }
 
+        public virtual ICollection<Order> Orders { get; set; } =
+            new HashSet<Order>();
+
         public static void Configure(DbModelBuilder builder)
         {
             var product = builder.Entity<Product>();
@@ -22,6 +26,10 @@ namespace eWallet.Models {
 
             product.Property(pr => pr.Title).IsRequired().HasMaxLength(50);
             product.Property(pr => pr.Code).IsRequired().HasMaxLength(25);
+
+            product.HasMany(el => el.Orders)
+                .WithRequired(el => el.Product)
+                .HasForeignKey(el => el.ProductId);
         }
     }
 }
