@@ -59,6 +59,7 @@ namespace eWallet.Areas.Farmers.Controllers
             var farmerWalletBalance = farmer.GeneralWalletBalance;
 
             var productModel = new ProductBuyModel {
+                GrantId = product.GrantId,
                 ProductId = product.Id,
                 ProductTitle = product.Title,
                 ProductDescription = product.Description,
@@ -71,7 +72,6 @@ namespace eWallet.Areas.Farmers.Controllers
             var agents = EWalletContext.AgentGrants.Include(el => el.Agent)
                 .Where(el => el.Status == AgentGrantStatus.Active && el.GrantId == product.GrantId)
                 .Select(el => el.Agent);
-
             ViewBag.AgentId = new SelectList(agents, "Id", "Name");
             return View(productModel);
         }
@@ -85,6 +85,11 @@ namespace eWallet.Areas.Farmers.Controllers
                 if (productModel.ProductQuantity < 1) {
                     AddNotification(Notification.GetError("Bad Request",
                         "Please, enter the number of items you want to buy"));
+
+                    var agents = EWalletContext.AgentGrants.Include(el => el.Agent)
+                        .Where(el => el.Status == AgentGrantStatus.Active && el.GrantId == productModel.GrantId)
+                        .Select(el => el.Agent);
+                    ViewBag.AgentId = new SelectList(agents, "Id", "Name");
                     return View(productModel);
                 }
                 var product = EWalletContext.Products.Find(productModel.ProductId);
@@ -92,6 +97,24 @@ namespace eWallet.Areas.Farmers.Controllers
                 {
                     AddNotification(Notification.GetError("Bad Request",
                         "Please, select a valid product to buy."));
+
+                    var agents = EWalletContext.AgentGrants.Include(el => el.Agent)
+                        .Where(el => el.Status == AgentGrantStatus.Active && el.GrantId == productModel.GrantId)
+                        .Select(el => el.Agent);
+                    ViewBag.AgentId = new SelectList(agents, "Id", "Name");
+                    return View(productModel);
+                }
+
+                var agent = EWalletContext.Agents.Find(productModel.AgentId);
+                if (agent == null)
+                {
+                    AddNotification(Notification.GetError("Bad Request",
+                        "Please, select a valid agent to buy from."));
+
+                    var agents = EWalletContext.AgentGrants.Include(el => el.Agent)
+                        .Where(el => el.Status == AgentGrantStatus.Active && el.GrantId == productModel.GrantId)
+                        .Select(el => el.Agent);
+                    ViewBag.AgentId = new SelectList(agents, "Id", "Name");
                     return View(productModel);
                 }
 

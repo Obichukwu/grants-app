@@ -34,7 +34,9 @@
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(el => el.GrantId)
                         @Html.HiddenFor(el => el.ProductId)
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.ProductTitle, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -62,19 +64,19 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.MultiPurposeWalletBalance, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.TextBoxFor(model => model.MultiPurposeWalletBalance, new { @class = "form-control  col-md-7 col-xs-12", @readonly="readonly" })
+                                @Html.TextBoxFor(model => model.MultiPurposeWalletBalance, new { @class = "form-control  col-md-7 col-xs-12", @readonly = "readonly" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.Label("Agent", htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.DropDownList("AgentId",null, new { @class = "form-control  col-md-7 col-xs-12", type = "Number" })
+                                @Html.DropDownList("AgentId", null, new { @class = "form-control  col-md-7 col-xs-12", type = "Number" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.ProductQuantity, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                @Html.TextBoxFor(model => model.ProductQuantity, new { @class = "form-control  col-md-7 col-xs-12", type="Number" })
+                                @Html.TextBoxFor(model => model.ProductQuantity, new { @class = "form-control  col-md-7 col-xs-12", type = "Number" })
                             </div>
                         </div>
                         <div class="ln_solid"></div>

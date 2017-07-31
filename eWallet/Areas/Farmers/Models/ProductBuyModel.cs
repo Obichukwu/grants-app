@@ -12,5 +12,6 @@
         public int ProductQuantity { get; set; }
         public string ProductTitle { get; set; }
         public string ProductDescription { get; set; }
+        public int GrantId { get; internal set; }
     }
 }
