@@ -1,30 +1,210 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<div class="jumbotron">
-    <h2 class="lead"> Grants e-Wallet Management System</h2>
-    <h4>This is a web application built in Partial fulfilment of the award of the HND in Computer Science in the Delta State Polytechnic, Ozoro, Delta State.</h4>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<!-- Sequence Slider -->
+<div class="h15 clear"></div>
+<script type="text/javascript">
+    var preloader = ($.browser.msie) ? false : true ;
+
+    $(document).ready(function(){
+        var options = {
+            autoPlay: true,
+            autoPlayDelay: 5000,
+            nextButton: true,
+            prevButton: true,
+            preloader: preloader,
+            animateStartingFrameIn: true,
+            transitionThreshold: 500,
+            fallback: {
+                theme: "slide",
+                speed: 500
+            }
+        };
+
+        var sequence = $("#sequence").sequence(options).data("sequence");
+
+        sequence.afterLoaded = function(){
+            $(".info").css('display','block');
+            $("#sequence").hover(
+                function() {
+                    $(".prev, .next").stop().animate({opacity:0.7},300);
+                },
+                function() {
+                    $(".prev, .next").stop().animate({opacity:0},300);
+                }
+            );
+
+            $(".prev, .next").hover(
+                function() {
+                    $(this).stop().animate({opacity:1},200);
+                },
+                function() {
+                    $(this).stop().animate({opacity:0.7},200);
+                }
+            );
+        }
+    })
+</script>
+
+
+<div class="row no_bm">
+    <div id="slider_holder" class="sixteen columns">
+        <div id="sequence">
+            <div class="prev"><span></span></div>
+            <div class="next"><span></span></div>
+
+            <ul>
+                <!-- Layer 1 -->
+                <li>
+                    <div class="info animate-in">
+                        <h3>Save our World</h3>
+                        @*<h3>Plant a tree today</h3>*@
+                        <p>Imagine a world without food, scarcity and hunger is surely inevitable. Start today and avoid hunger tomorrow.</p>
+                        @*<p><a class="link" href="services.html">View Services &raquo;</a>*@
+                    </div>
+                    <img class="slider_bgr animate-in" src="~/Content/images/1.jpg" />
+                    <img class="slider_img animate-in" src="~/Content/images/1_1.png" />
+                </li>
+
+                <!-- Layer 2 -->
+                <li>
+                    <div class="info">
+                        <h3>Save livestock</h3>
+                        @*<h3>Avoid livestock extinction</h3>*@
+                        <p>Livestock is a necessary ingredient in living! Wild life is important. Save our world by preserving livestock and wild life.</p>
+                    </div>
+                    <img class="slider_bgr" src="~/Content/images/2.jpg" />
+                    <img class="slider_img" src="~/Content/images/2_2.png" />
+                </li>
+
+                <!-- Layer 3 -->
+                <li>
+                    <div class="info">
+                        <h3>Green is Life</h3>
+                        @*<h3>Go Green</h3>*@
+                        <p>We eat to live! Make the best out of your opportunity today to go green.</p>
+                        @*<p><a class="link" href="blog.html">Read Our Blog &raquo;</a>*@
+                    </div>
+                    <img class="slider_img" src="~/Content/images/3.jpg" />
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Sequence Slider::END-->
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Model-View-Controller</h2>
-        <p>
-            The project was built using HTML, CSS and JavaScript. These are all features of the new programming paradigm, ASP.NET MVC, which is built on the ASP.NET platform.
-           
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+
+<!-- Big Title Section -->
+<div class="row no_bm">
+    <div class="section_big_title sixteen columns">
+        <div class="h10 divider_bgr"></div>
+        <h1>Get grants for your agricultural supplies and products. We intend to make your farm <strong>a great success</strong> so you can feed the world</h1>
+        <div class="h10 divider_bgr"></div>
+        <div class="clearfix"></div>
+        <a href="~/Account/Login" class="button">Login Now</a> &nbsp; OR &nbsp; <a href="~/Account/Register" class="button button_hilite">Sign Up</a>
+        <br />
+        <div class="clearfix"></div>
+        <h2>Agriculture not only gives riches to a nation, but the only riches she can call her own</h2>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <h3><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></h3>
+</div>
+<!-- Big Title Section::END-->
+
+<div class="eight columns">
+
+    <!-- Tabs -->
+    <h2 class="title"><span>Why implement this?</span></h2>
+
+    <div id="tabs" class="htabs">
+        <a href="#tab-1" class="selected">Less Cost</a>
+        <a href="#tab-2">Distribution Actualization</a>
+        <a href="#tab-3">Simply Awesome</a>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <h3><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></h3>
+
+    <div id="tab-1" class="tab-content">
+        <img src="~/Content/images/bird.jpg" style="float: left; margin: 6px 5% 10px 0; width: 34%;" />
+        <div style="float: left; width: 61%;">
+            <h4>Cleanest design out there</h4>
+            <ul class="checked">
+                <li>Get Grant at home</li>
+                <li>Only call your agent if needed</li>
+                <li>Intuitive and pleasant user experience</li>
+            </ul>
+        </div>
     </div>
+
+    <div id="tab-2" class="tab-content">
+        <h4>Eliminate fear of Distribution</h4>
+        <ul class="arrowed">
+            <li>Plenty of Agroaid supplies</li>
+            <li>Premade and ready to use distribution system</li>
+            <li>Agents get paid here after delivery</li>
+        </ul>
+    </div>
+    <div id="tab-3" class="tab-content">
+        Our proposed system keeps all transactions for reference, accounting for all grants given in a clear manner, and documented.
+    </div>
+
+    <script type="text/javascript">
+        $('#tabs a').tabs();
+    </script>
+    <!-- Tabs::END -->
+
+</div>
+
+
+<div class="eight columns">
+    <h2 class="title"><span>Client Testimonials</span></h2>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+        <div class='carousel_arrows_bgr'></div>
+        <ul id="testimonials_carousel">
+            <li class="eight columns alpha">
+                <div class="testimonial_quote">
+                    <div class="quote_content">
+                        <p>Wow, just the platform we were looking for! Stunning clean design, element rich, clean code, browser friendly and easy to manage. immediate implementation shouldbe done please!</p>
+                        <span class="quote_arrow"></span>
+                    </div>
+                    <div class="quote_author">
+                        <div class="icon_testimonial">Eric Rogers</div><span class="quote_author_description">Manager, COMODO Farms</span>
+                    </div>
+                </div>
+            </li>
+            <li class="eight columns alpha">
+                <div class="testimonial_quote">
+                    <div class="quote_content">
+                        <p>On extremely short notice, agents can supply products and supplies using this platform. It promises to be reliable. Thank you for the personal touch, understanding and responsiveness to all our needs!</p>
+                        <span class="quote_arrow"></span>
+                    </div>
+                    <div class="quote_author"><div class="icon_testimonial">Dangote Baile</div><span class="quote_author_description">Managing Partner, Lux Farm Supplies</span></div>
+                </div>
+            </li>
+            <li class="eight columns alpha">
+                <div class="testimonial_quote">
+                    <div class="quote_content">
+                        <p>Awesome system! Very intuitive and easy to use. Just rated 5 stars! Will recommend to all our partners and co-farmers! Thanks a lot again!</p>
+                        <span class="quote_arrow"></span>
+                    </div>
+                    <div class="quote_author">
+                        <div class="icon_testimonial">John Paul</div><span class="quote_author_description">Managing Director, JP Farms</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#testimonials_carousel').jcarousel({
+                auto: 4,
+                scroll: 1,
+                wrap: 'last',
+                easing: 'easeInOutExpo',
+                animation: 600
+            });
+        });
+    </script>
+    <!-- Testimonials::END -->
 </div>
