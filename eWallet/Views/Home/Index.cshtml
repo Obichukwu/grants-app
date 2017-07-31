@@ -6,9 +6,9 @@
 <!-- Sequence Slider -->
 <div class="h15 clear"></div>
 <script type="text/javascript">
-    var preloader = ($.browser.msie) ? false : true ;
+    var preloader = ($.browser.msie) ? false : true;
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         var options = {
             autoPlay: true,
             autoPlayDelay: 5000,
@@ -25,23 +25,23 @@
 
         var sequence = $("#sequence").sequence(options).data("sequence");
 
-        sequence.afterLoaded = function(){
-            $(".info").css('display','block');
+        sequence.afterLoaded = function () {
+            $(".info").css('display', 'block');
             $("#sequence").hover(
-                function() {
-                    $(".prev, .next").stop().animate({opacity:0.7},300);
+                function () {
+                    $(".prev, .next").stop().animate({ opacity: 0.7 }, 300);
                 },
-                function() {
-                    $(".prev, .next").stop().animate({opacity:0},300);
+                function () {
+                    $(".prev, .next").stop().animate({ opacity: 0 }, 300);
                 }
             );
 
             $(".prev, .next").hover(
-                function() {
-                    $(this).stop().animate({opacity:1},200);
+                function () {
+                    $(this).stop().animate({ opacity: 1 }, 200);
                 },
-                function() {
-                    $(this).stop().animate({opacity:0.7},200);
+                function () {
+                    $(this).stop().animate({ opacity: 0.7 }, 200);
                 }
             );
         }
@@ -104,7 +104,9 @@
         <h1>Get grants for your agricultural supplies and products. We intend to make your farm <strong>a great success</strong> so you can feed the world</h1>
         <div class="h10 divider_bgr"></div>
         <div class="clearfix"></div>
-        <a href="~/Account/Login" class="button">Login Now</a> &nbsp; OR &nbsp; <a href="~/Account/Register" class="button button_hilite">Sign Up</a>
+        <a href="~/Account/Login" class="button">Login Now</a> &nbsp; OR &nbsp;
+        <a href="~/Account/RegisterFarmer" class="button button_hilite">Sign Up as Farmer</a>
+        &nbsp; OR &nbsp; <a href="~/Account/RegisterAgent" class="button button_hilite">Sign Up as Agent</a>
         <br />
         <div class="clearfix"></div>
         <h2>Agriculture not only gives riches to a nation, but the only riches she can call her own</h2>
@@ -196,7 +198,7 @@
         </ul>
     </div>
     <script type="text/javascript">
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery('#testimonials_carousel').jcarousel({
                 auto: 4,
                 scroll: 1,
